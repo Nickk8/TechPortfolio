@@ -1,0 +1,221 @@
+================================================================================
+                    TECHPORTFOLIO (MEU PORTFÓLIO)
+         DOCUMENTAÇÃO COMPLETA DO SISTEMA E GUIA DE EXECUÇÃO
+================================================================================
+
+1. VISÃO GERAL DO PROJETO
+--------------------------------------------------------------------------------
+O "Meu Portfólio" (TechPortfolio) é uma plataforma web desenvolvida para
+estudantes do Ensino Médio e Técnico criarem, organizarem e exibirem seus
+projetos acadêmicos, tecnológicos e artísticos. A plataforma visa facilitar a
+apresentação de conquistas para processos seletivos de estágio, vagas de
+emprego e oportunidades universitárias.
+
+A interface foi construída com alta fidelidade ao protótipo do Figma, utilizando
+uma identidade visual moderna (tons de roxo/azul vibrante, modo escuro na
+navegação lateral e rodapé, design responsivo e componentes acessíveis).
+
+
+2. ARQUITETURA E TECNOLOGIAS
+--------------------------------------------------------------------------------
+- BACKEND:
+  * Runtime: Node.js
+  * Framework: Express.js (v5)
+  * Módulos auxiliares: CORS, Bcrypt, JsonWebToken, Dotenv
+  * Porta padrão: 3000 (http://localhost:3000)
+
+- FRONTEND:
+  * Framework: React (v19) com Vite (v8)
+  * Roteamento: React Router DOM (v7)
+  * Estilização: CSS puro (Vanilla CSS com Design System de variáveis CSS)
+  * Porta padrão: 5173 (http://localhost:5173)
+  * Proxy de API configurado via Vite para direcionamento automático de /api.
+
+
+3. PRÉ-REQUISITOS
+--------------------------------------------------------------------------------
+Antes de iniciar, certifique-se de ter instalado em sua máquina:
+  * Node.js (versão 18.x, 20.x ou superior recomendada)
+  * Gerenciador de pacotes npm (já incluso na instalação do Node.js)
+  * Terminal (PowerShell, Prompt de Comando do Windows ou Bash)
+  * Navegador moderno (Google Chrome, Microsoft Edge, Firefox, Brave, etc.)
+
+
+4. COMO EXECUTAR O SISTEMA PASSO A PASSO
+--------------------------------------------------------------------------------
+Para o funcionamento ideal, você precisará de DOIS terminais abertos simultaneamente:
+um para o servidor Backend e outro para o servidor Frontend.
+
+--------------------------------------------------------------------------------
+PASSO 4.1: INICIALIZAR O BACKEND (API)
+--------------------------------------------------------------------------------
+1. Abra um terminal (PowerShell ou Prompt de Comando).
+2. Navegue até a pasta do backend:
+   cd c:\Users\amren\Desktop\TechPortfolio-main\backend
+
+3. Instale as dependências (necessário apenas na primeira vez ou após atualizações):
+   npm install
+
+4. Inicie o servidor da API:
+   npm start
+   (ou "npm run dev" para execução com monitoramento nodemon)
+
+5. Mensagem esperada no console:
+   "Servidor rodando, gracas a Deus, em http://localhost:3000"
+
+--------------------------------------------------------------------------------
+PASSO 4.2: INICIALIZAR O FRONTEND (INTERFACES E TELAS)
+--------------------------------------------------------------------------------
+1. Abra um SEGUNDO terminal (mantenha o terminal do backend rodando).
+2. Navegue até a pasta do frontend:
+   cd c:\Users\amren\Desktop\TechPortfolio-main\frontend
+
+3. Instale as dependências (necessário apenas na primeira vez):
+   npm install
+
+4. Inicie o servidor de desenvolvimento:
+   npm run dev
+
+5. Mensagem esperada no console:
+   "VITE v8.3.0  ready in ... ms"
+   "➜  Local:   http://localhost:5173/"
+
+--------------------------------------------------------------------------------
+PASSO 4.3: ACESSO NO NAVEGADOR
+--------------------------------------------------------------------------------
+Abra seu navegador de preferência e acesse o endereço:
+http://localhost:5173/
+
+
+5. ESTRUTURA DE PASTAS E ARQUIVOS
+--------------------------------------------------------------------------------
+TechPortfolio-main/
+│
+├── DOCUMENTACAO.txt              <- Esta documentação
+├── .gitignore                    <- Arquivos ignorados pelo controle de versão
+│
+├── backend/                      <- Servidor de API Node.js/Express
+│   ├── package.json              <- Dependências e scripts do backend
+│   └── src/
+│       ├── app.js                <- Definição do Express, middlewares e rotas
+│       └── server.js             <- Inicialização do servidor na porta 3000
+│
+└── frontend/                     <- Aplicação web React + Vite
+    ├── index.html                <- Página HTML principal (com tags SEO e viewport)
+    ├── package.json              <- Dependências e scripts do frontend
+    ├── vite.config.js            <- Configurações do Vite e proxy para o backend
+    ├── public/                   <- Imagens e recursos estáticos (banner, avatars)
+    │   ├── banner.jpg
+    │   ├── students.jpg
+    │   ├── p1.jpg, p2.jpg, p3.jpg, p4.jpg
+    │   └── favicon.svg
+    └── src/
+        ├── main.jsx              <- Ponto de entrada da aplicação React
+        ├── App.jsx               <- Configuração de rotas e layout geral (AppLayout)
+        ├── App.css               <- Estilos globais e componentes da interface
+        ├── index.css             <- Variáveis de cor, tipografia e reset CSS
+        │
+        ├── components/           <- Componentes reutilizáveis
+        │   ├── Sidebar.jsx       <- Barra de navegação lateral escura
+        │   ├── Topbar.jsx        <- Barra superior com campo de busca e avatar
+        │   ├── Footer.jsx        <- Rodapé escuro com contato, redes e logout
+        │   └── PortfolioCard.jsx <- Card de projeto com estatísticas e curtida
+        │
+        ├── pages/                <- Telas da aplicação
+        │   ├── LoginPage.jsx     <- Login, Cadastro e autenticação social
+        │   ├── InicioPage.jsx    <- Dashboard com banner de boas-vindas e métricas
+        │   ├── UsuarioPage.jsx   <- Perfil do estudante e projetos pessoais
+        │   ├── PortfoliosPage.jsx<- Catálogo com filtros de categorias e busca
+        │   └── CriarPage.jsx     <- Formulário para publicar novos portfólios
+        │
+        ├── data/
+        │   └── portfolios.js     <- Dados iniciais de fallback
+        │
+        └── services/
+            └── api.js            <- Conexão HTTP com os endpoints do backend
+
+
+6. ROTAS DO FRONTEND (NAVEGAÇÃO)
+--------------------------------------------------------------------------------
+- /login ou /       : Tela inicial de acesso / cadastro de estudantes.
+- /inicio           : Visão geral com estatísticas, métricas e projetos em alta.
+- /usuario          : Perfil completo do estudante com dados da escola e bio.
+- /portfolios       : Galeria de todos os portfólios com busca e filtro por tema.
+- /criar            : Tela de cadastro de novos projetos com drag and drop.
+
+
+7. ENDPOINTS DA API BACKEND (HTTP REST)
+--------------------------------------------------------------------------------
+Base URL: http://localhost:3000/api
+
+* AUTENTICAÇÃO:
+  - POST /api/auth/login
+    Corpo (JSON): { "email": "...", "senha": "..." }
+    Retorno: Confirmação de login com dados do estudante e token JWT simulado.
+
+  - POST /api/auth/cadastro
+    Corpo (JSON): { "nome": "...", "email": "...", "senha": "...", "instituicao": "..." }
+    Retorno: Confirmação de cadastro e credenciais criadas.
+
+* USUÁRIOS:
+  - GET /api/usuarios
+    Retorno: Lista de perfis de estudantes cadastrados.
+
+  - GET /api/usuarios/:id
+    Retorno: Detalhes do perfil do usuário por ID (nome, curso, escola, cidade, bio).
+
+* PORTFÓLIOS:
+  - GET /api/portfolios
+    Parâmetros opcionais (Query):
+      ?categoria=Tecnologia
+      ?busca=Sistema
+    Retorno: Lista de portfólios filtrados ou ordenados.
+
+  - GET /api/portfolios/:id
+    Retorno: Detalhes do portfólio especificado.
+
+  - POST /api/portfolios
+    Corpo (JSON): { "titulo": "...", "descricao": "...", "categoria": "...", "tipo": "..." }
+    Retorno: Confirmação de criação e objeto do portfólio cadastrado.
+
+  - PUT /api/portfolios/:id
+    Corpo (JSON): Dados atualizados do projeto.
+    Retorno: Portfólio atualizado.
+
+  - DELETE /api/portfolios/:id
+    Retorno: Mensagem de exclusão com sucesso.
+
+  - POST /api/portfolios/:id/curtir
+    Retorno: Total de curtidas atualizado em tempo real.
+
+
+8. CREDENCIAIS DE TESTE / ACESSO RÁPIDO
+--------------------------------------------------------------------------------
+Para acessar a plataforma na tela de login:
+  - E-mail: qualquer e-mail (exemplo: maria.silva@escola.br)
+  - Senha: qualquer senha (exemplo: 123456)
+  - Ou clique diretamente no botão "Entrar na Plataforma" ou redes sociais.
+
+
+9. RESOLUÇÃO DE PROBLEMAS COMUNS (TROUBLESHOOTING)
+--------------------------------------------------------------------------------
+Q: Ao rodar o backend aparece o erro "Cannot find module 'express'"?
+R: Execute o comando "npm install" dentro da pasta "backend" para baixar
+   todas as dependências do servidor.
+
+Q: As imagens de projetos não aparecem?
+R: Certifique-se de que os arquivos de mídia (p1.jpg, banner.jpg, etc.)
+   estão presentes na pasta "frontend/public".
+
+Q: O botão "Sair" do rodapé faz o quê?
+R: Ele remove os tokens de sessão salvos localmente e redireciona o usuário
+   de volta para a tela de login (/login).
+
+Q: Como gerar uma versão pronta para produção (deploy)?
+R: Dentro da pasta "frontend", execute:
+   npm run build
+   Os arquivos finais otimizados serão gerados na pasta "frontend/dist".
+
+================================================================================
+                    FIM DO DOCUMENTO DE INSTRUÇÕES
+================================================================================
