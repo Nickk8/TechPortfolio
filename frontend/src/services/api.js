@@ -9,16 +9,28 @@ export async function loginUser(email, senha) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, senha }),
     });
+    const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.erro || 'Erro ao realizar login.');
+      throw new Error(data.erro || 'Erro ao realizar login.');
     }
-    return await res.json();
+    return data;
   } catch (error) {
+    if (error.message && error.message !== 'Failed to fetch') {
+      throw error;
+    }
     console.warn('Backend indisponível, simulando login local:', error);
+    const saved = localStorage.getItem('tp_user');
+    const localUser = saved ? JSON.parse(saved) : null;
+    if (localUser && (localUser.email === email || localUser.nome === email)) {
+      return {
+        mensagem: 'Login realizado localmente',
+        usuario: localUser,
+        token: 'local-token-' + Date.now(),
+      };
+    }
     return {
       mensagem: 'Login realizado localmente',
-      usuario: { id: 1, nome: 'Maria Silva', email: email || 'maria.silva@escola.br', papel: 'Estudante' },
+      usuario: { id: 1, nome: email || 'Usuário', email, papel: 'Estudante' },
       token: 'local-token-' + Date.now(),
     };
   }
@@ -31,16 +43,31 @@ export async function registerUser(nome, email, senha, instituicao) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ nome, email, senha, instituicao }),
     });
+    const data = await res.json().catch(() => ({}));
     if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(err.erro || 'Erro ao cadastrar.');
+      throw new Error(data.erro || 'Erro ao cadastrar.');
     }
-    return await res.json();
+    return data;
   } catch (error) {
+    if (error.message && error.message !== 'Failed to fetch') {
+      throw error;
+    }
     console.warn('Backend indisponível, simulando cadastro local:', error);
+    const username = (nome || 'usuario').toLowerCase().replace(/[^a-z0-9]/g, '');
     return {
       mensagem: 'Usuário cadastrado com sucesso',
-      usuario: { id: 1, nome, email, papel: 'Estudante' },
+      usuario: {
+        id: Date.now(),
+        nome,
+        username,
+        email,
+        instituicao: instituicao || 'Instituição de Ensino',
+        curso: 'Ensino Médio',
+        anoSerie: '1º Ano',
+        cidade: 'Brasil',
+        bio: `Estudante na instituição ${instituicao || 'Instituição de Ensino'}.`,
+        papel: 'Estudante',
+      },
       token: 'local-token-' + Date.now(),
     };
   }
@@ -123,23 +150,23 @@ export async function likePortfolio(id) {
   }
 }
 
-export async function fetchUsuario(id = 1) {
+export async function fetchUsuario(id) {
   try {
-    const res = await fetch(`${API_BASE}/usuarios/${id}`);
+    const token = localStorage.getItem('tp_token');
+    const headers = token ? { Authorization: `Bearer ${token}` } : {};
+    const url = id ? `${API_BASE}/usuarios/${id}` : `${API_BASE}/auth/me`;
+    const res = await fetch(url, { headers });
     if (!res.ok) throw new Error('Falha ao buscar usuário');
     return await res.json();
-  } catch (error) {
-    return {
-      id: 1,
-      nome: 'Maria Silva',
-      username: 'mariasilva',
-      email: 'maria.silva@escola.br',
-      papel: 'Estudante',
-      instituicao: 'Colégio Estadual',
-      curso: 'Ensino Médio',
-      anoSerie: '3º Ano',
-      cidade: 'Fortaleza - CE',
-      bio: 'Estudante apaixonada por tecnologia, educação e impacto social.',
-    };
+  } catch {
+    const saved = localStorage.getItem('tp_user');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch {
+        // ignore
+      }
+    }
+    return null;
   }
 }

@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { loginUser, registerUser } from '../services/api';
+import { useNavigate } from '../router';
+import { useAuth } from '../context/AuthContext';
 
 function LoginPage() {
   const navigate = useNavigate();
+  const { login, register } = useAuth();
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [regName, setRegName] = useState('');
@@ -12,16 +13,19 @@ function LoginPage() {
   const [regSchool, setRegSchool] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   async function handleLogin(e) {
     e.preventDefault();
+    if (!loginEmail.trim() || !loginPassword.trim()) {
+      setErrorMessage('Por favor, informe seu e-mail ou nome e sua senha.');
+      return;
+    }
     setLoading(true);
     setErrorMessage('');
+    setSuccessMessage('');
     try {
-      const res = await loginUser(loginEmail, loginPassword);
-      if (res.token) {
-        localStorage.setItem('tp_token', res.token);
-      }
+      await login(loginEmail, loginPassword);
       navigate('/usuario');
     } catch (err) {
       setErrorMessage(err.message || 'Erro ao realizar login');
@@ -32,14 +36,19 @@ function LoginPage() {
 
   async function handleRegister(e) {
     e.preventDefault();
+    if (!regName.trim() || !regEmail.trim() || !regPassword.trim()) {
+      setErrorMessage('Nome, e-mail e senha são obrigatórios para cadastro.');
+      return;
+    }
     setLoading(true);
     setErrorMessage('');
+    setSuccessMessage('');
     try {
-      const res = await registerUser(regName, regEmail, regPassword, regSchool);
-      if (res.token) {
-        localStorage.setItem('tp_token', res.token);
-      }
-      navigate('/usuario');
+      await register(regName, regEmail, regPassword, regSchool);
+      setSuccessMessage('Cadastro realizado com sucesso! Entrando na plataforma...');
+      setTimeout(() => {
+        navigate('/usuario');
+      }, 400);
     } catch (err) {
       setErrorMessage(err.message || 'Erro ao realizar cadastro');
     } finally {
@@ -108,19 +117,55 @@ function LoginPage() {
             </button>
           </div>
 
-          <div className="divider">ou use seu e-mail</div>
+          <div className="divider">ou use seu e-mail ou nome</div>
+
+          {errorMessage && (
+            <div
+              id="login-error-msg"
+              style={{
+                padding: '12px 16px',
+                marginBottom: 16,
+                backgroundColor: '#fee2e2',
+                color: '#b91c1c',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: 500,
+                border: '1px solid #f87171',
+              }}
+            >
+              {errorMessage}
+            </div>
+          )}
+
+          {successMessage && (
+            <div
+              id="login-success-msg"
+              style={{
+                padding: '12px 16px',
+                marginBottom: 16,
+                backgroundColor: '#d1fae5',
+                color: '#065f46',
+                borderRadius: 8,
+                fontSize: 14,
+                fontWeight: 500,
+                border: '1px solid #34d399',
+              }}
+            >
+              {successMessage}
+            </div>
+          )}
 
           {/* Login section */}
           <form id="login-form" onSubmit={handleLogin}>
             <div className="form-section">
               <div className="form-section-title">Acessar Minha Conta</div>
               <div className="form-group">
-                <label className="form-label" htmlFor="login-email">E-mail</label>
+                <label className="form-label" htmlFor="login-email">E-mail ou Nome Completo</label>
                 <input
                   id="login-email"
-                  type="email"
+                  type="text"
                   className="form-input"
-                  placeholder="seu.email@escola.com"
+                  placeholder="seu.email@escola.com ou seu nome"
                   value={loginEmail}
                   onChange={e => setLoginEmail(e.target.value)}
                 />
@@ -141,8 +186,8 @@ function LoginPage() {
                   onChange={e => setLoginPassword(e.target.value)}
                 />
               </div>
-              <button id="btn-login" type="submit" className="btn-primary">
-                Entrar na Plataforma
+              <button id="btn-login" type="submit" className="btn-primary" disabled={loading}>
+                {loading ? 'Acessando...' : 'Entrar na Plataforma'}
               </button>
             </div>
           </form>
@@ -197,8 +242,8 @@ function LoginPage() {
                   onChange={e => setRegPassword(e.target.value)}
                 />
               </div>
-              <button id="btn-register" type="submit" className="btn-secondary">
-                Criar minha conta gratuita
+              <button id="btn-register" type="submit" className="btn-secondary" disabled={loading}>
+                {loading ? 'Cadastrando...' : 'Criar minha conta gratuita'}
               </button>
             </div>
           </form>

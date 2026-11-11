@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from './router';
+import { AuthProvider } from './context/AuthContext';
 import './App.css';
 
 import Sidebar from './components/Sidebar';
@@ -30,48 +31,50 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Login page — no layout wrapper */}
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/login" element={<LoginPage />} />
+      <AuthProvider>
+        <Routes>
+          {/* Login page — no layout wrapper */}
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/login" element={<LoginPage />} />
 
-        {/* App pages — with layout */}
-        <Route
-          path="/usuario"
-          element={
-            <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
-              <UsuarioPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/inicio"
-          element={
-            <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
-              <InicioPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/criar"
-          element={
-            <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
-              <CriarPage />
-            </AppLayout>
-          }
-        />
-        <Route
-          path="/portfolios"
-          element={
-            <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
-              <PortfoliosPage searchValue={searchValue} />
-            </AppLayout>
-          }
-        />
+          {/* App pages — with layout */}
+          <Route
+            path="/usuario"
+            element={
+              <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
+                <UsuarioPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/inicio"
+            element={
+              <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
+                <InicioPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/criar"
+            element={
+              <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
+                <CriarPage />
+              </AppLayout>
+            }
+          />
+          <Route
+            path="/portfolios"
+            element={
+              <AppLayout searchValue={searchValue} onSearchChange={setSearchValue}>
+                <PortfoliosPage searchValue={searchValue} />
+              </AppLayout>
+            }
+          />
 
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+          {/* Fallback */}
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </AuthProvider>
     </BrowserRouter>
   );
 }

@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../router';
+import { useAuth } from '../context/AuthContext';
 import PortfolioCard from '../components/PortfolioCard';
 import { fetchPortfolios } from '../services/api';
 
 function InicioPage() {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [portfolios, setPortfolios] = useState([]);
+
+  const userName = user?.nome || 'Estudante';
 
   useEffect(() => {
     fetchPortfolios().then(data => {
@@ -66,7 +70,7 @@ function InicioPage() {
             Bem-vindo de volta 👋
           </p>
           <h1 style={{ fontSize: 28, fontWeight: 800, marginBottom: 10, lineHeight: 1.2 }}>
-            Olá, Maria Silva!
+            Olá, {userName}!
           </h1>
           <p style={{ fontSize: 15, opacity: 0.85, maxWidth: 500, lineHeight: 1.6 }}>
             Seu portfólio está ganhando visibilidade. Continue adicionando projetos para impressionar

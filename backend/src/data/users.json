@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nome": "Maria Silva",
+    "username": "mariasilva",
+    "email": "maria.silva@escola.br",
+    "senha": "123",
+    "papel": "Estudante",
+    "instituicao": "Colégio Estadual",
+    "curso": "Ensino Médio",
+    "anoSerie": "3º Ano",
+    "cidade": "Fortaleza - CE",
+    "bio": "Estudante apaixonada por tecnologia, educação e impacto social."
+  },
+  {
+    "id": 1794361230897,
+    "nome": "Kauan Maia",
+    "username": "kauanmaia",
+    "email": "kauanmelomaia@gmail.com",
+    "senha": "Rr93350912",
+    "instituicao": "IFCE campus Maranguape",
+    "curso": "Ensino Médio",
+    "anoSerie": "1º Ano",
+    "cidade": "Brasil",
+    "bio": "Estudante na instituição IFCE campus Maranguape.",
+    "papel": "Estudante",
+    "criadoEm": "2026-11-11T01:40:30.898Z"
+  }
+]

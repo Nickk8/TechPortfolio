@@ -1,10 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../router';
+import { useAuth } from '../context/AuthContext';
 
 function Footer() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   function handleLogout() {
-    localStorage.removeItem('tp_token');
+    logout();
     navigate('/login');
   }
 

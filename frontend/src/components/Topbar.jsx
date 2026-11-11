@@ -1,4 +1,19 @@
+import { useAuth } from '../context/AuthContext';
+
 function Topbar({ searchValue, onSearchChange }) {
+  const { user } = useAuth();
+  const userName = user?.nome || 'Usuário';
+  const userRole = user?.papel || 'Estudante';
+  const initials = userName
+    ? userName
+        .split(' ')
+        .filter(Boolean)
+        .map(n => n[0])
+        .slice(0, 2)
+        .join('')
+        .toUpperCase()
+    : 'U';
+
   return (
     <header className="topbar">
       <div className="search-bar">
@@ -26,10 +41,10 @@ function Topbar({ searchValue, onSearchChange }) {
         </button>
 
         <div id="topbar-user-badge" className="user-badge">
-          <div className="user-avatar-sm">MS</div>
+          <div className="user-avatar-sm">{initials}</div>
           <div className="user-info">
-            <span className="user-name">Maria Silva</span>
-            <span className="user-role">Estudante</span>
+            <span className="user-name">{userName}</span>
+            <span className="user-role">{userRole}</span>
           </div>
         </div>
       </div>

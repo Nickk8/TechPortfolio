@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from '../router';
 import { createPortfolio } from '../services/api';
 
 const CATEGORIES = [
