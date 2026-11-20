@@ -1,0 +1,165 @@
+================================================================================
+                    TECHPORTFOLIO (MEU PORTFÓLIO)
+         DOCUMENTAÇÃO COMPLETA DO SISTEMA E GUIA DE EXECUÇÃO
+================================================================================
+
+1. VISÃO GERAL DO PROJETO
+--------------------------------------------------------------------------------
+O "Meu Portfólio" (TechPortfolio) é uma plataforma web desenvolvida para
+estudantes do Ensino Médio e Técnico criarem, organizarem, compartilharem via
+link oficial e exportarem em PDF seus projetos acadêmicos e tecnológicos.
+
+A identidade visual e a metodologia de captação foram atualizadas para o padrão
+oficial do WEBNODE:
+  * Paleta de cores oficial: Azul Primário (#0066FF), Ciano Destaque (#00C4FF),
+    Azul Noturno (#0A1628) e Fundo Suave (#F0F4FF).
+  * Ilustrações vetoriais modernas em formato SVG (p1.svg, p2.svg, p3.svg,
+    p4.svg, banner.svg, students.svg e favicon.svg).
+  * Captação rápida de título na página inicial (/inicio).
+  * Assistente em 4 etapas na criação de portfólios (/criar).
+  * Salvar e compartilhar via Link Oficial (/portfolio/:id) e em formato PDF
+    com folha A4 formatada para impressão sem barras de navegação.
+  * Recuperação de senha completa ("Esqueceu a senha?") na página de login.
+  * Catálogo de portfólios unificado na aba "Todos" (projetos criados pelo
+    estudante + catálogo de modelos das categorias Tecnologia, Pesquisa
+    acadêmica e Design).
+
+
+2. ARQUITETURA E TECNOLOGIAS
+--------------------------------------------------------------------------------
+- BACKEND:
+  * Runtime: Node.js (versão 18 ou superior)
+  * Framework: Express.js (v5)
+  * Autenticação: JSON Web Token (JWT), Bcrypt
+  * Banco de Dados: PostgreSQL (com fallback automático e resiliente para o
+    arquivo backend/src/data/users.json quando o banco não estiver configurado)
+  * Endereço padrão: http://localhost:3000
+
+- FRONTEND:
+  * Framework: React (v19) com Vite (v8)
+  * Roteador: Implementação própria com suporte a rotas dinâmicas (/portfolio/:id)
+  * Estilização: CSS moderno (paleta Webnode, responsividade e layout flex/grid)
+  * Endereço padrão: http://localhost:5173
+  * Proxy configurado no Vite para repassar requisições /api para a porta 3000.
+
+
+3. PRÉ-REQUISITOS
+--------------------------------------------------------------------------------
+Antes de iniciar, certifique-se de ter instalado:
+  * Node.js (versão 18.x, 20.x ou superior)
+  * Terminal (PowerShell ou Prompt de Comando do Windows)
+  * Navegador moderno (Google Chrome, Microsoft Edge, Brave, etc.)
+
+
+4. COMO EXECUTAR O SISTEMA PASSO A PASSO
+--------------------------------------------------------------------------------
+Para a execução completa, mantenha DOIS terminais abertos simultaneamente:
+um para o Backend (API) e outro para o Frontend (React/Vite).
+
+--------------------------------------------------------------------------------
+PASSO 4.1: INICIALIZAR O BACKEND (API)
+--------------------------------------------------------------------------------
+1. Abra um terminal na pasta do projeto:
+   cd backend
+
+2. Instale as dependências (necessário apenas na primeira vez):
+   npm install
+
+3. Inicie o servidor:
+   npm start
+   (Ou utilize "npm run dev" para rodar com o nodemon)
+
+4. Mensagem esperada no terminal:
+   "Servidor rodando, gracas a Deus, em http://localhost:3000"
+
+--------------------------------------------------------------------------------
+PASSO 4.2: INICIALIZAR O FRONTEND
+--------------------------------------------------------------------------------
+1. Abra um SEGUNDO terminal (mantenha o terminal do backend rodando):
+   cd frontend
+
+2. Instale as dependências (necessário apenas na primeira vez):
+   npm install
+
+3. Inicie a aplicação com o Vite:
+   npm run dev
+
+4. Mensagem esperada no terminal:
+   "VITE v8.3.0  ready in ... ms"
+   "➜  Local:   http://localhost:5173/"
+
+--------------------------------------------------------------------------------
+PASSO 4.3: ACESSO NO NAVEGADOR
+--------------------------------------------------------------------------------
+Abra seu navegador e acesse:
+http://localhost:5173/
+
+
+5. CREDENCIAIS DE ACESSO DISPONÍVEIS
+--------------------------------------------------------------------------------
+Você pode utilizar qualquer uma das seguintes contas cadastradas:
+
+1) E-mail: kauanmelomaia@gmail.com
+   Senha:  Rr93350912
+   Nome:   Kauan Maia (IFCE campus Maranguape)
+
+2) E-mail: maria.silva@escola.br
+   Senha:  123
+   Nome:   Maria Silva
+
+3) E-mail: jenniferanne418@gmail.com
+   Senha:  123456789
+   Nome:   Jennifer Anne
+
+REDEFINIÇÃO DE SENHA ("Esqueceu a senha?"):
+Caso queira alterar a senha de qualquer uma das contas ou se esquecer a senha:
+1. Na tela de login, clique no link "Esqueceu a senha?".
+2. Digite o e-mail cadastrado (ex: kauanmelomaia@gmail.com).
+3. Digite e confirme uma nova senha de no mínimo 6 caracteres.
+4. Clique em "Redefinir minha senha". O sistema atualizará a credencial
+   imediatamente e você já poderá entrar com a nova senha.
+
+
+6. ROTAS E NAVEGAÇÃO DA APLICAÇÃO
+--------------------------------------------------------------------------------
+- /login ou /       : Tela inicial de acesso, cadastro e redefinição de senha.
+- /inicio           : Tela hero com barra rápida de captação de portfólio no
+                      estilo Webnode, galeria de modelos e guia em 4 passos.
+- /criar            : Assistente interativo em 4 passos para criar novos portfólios:
+                      Passo 1: Seleção de categoria (Tecnologia, Pesquisa, Design...)
+                      Passo 2: Título, objetivo e seleção de habilidades (chips)
+                      Passo 3: Escolha do template visual
+                      Passo 4: Escolha de capa e visualização do card em tempo real
+- /portfolios       : Galeria de portfólios com abas ("Todos", "Tecnologia",
+                      "Pesquisa acadêmica", "Design"), ordenação e busca em tempo real.
+- /usuario          : Perfil completo do estudante com dados da escola e galeria
+                      pessoal dos portfólios criados.
+- /portfolio/:id    : Página pública do portfólio via link oficial com botões de
+                      "Copiar Link", "Salvar em PDF", WhatsApp e LinkedIn.
+
+
+7. SALVAMENTO E EXPORTAÇÃO (LINK E PDF)
+--------------------------------------------------------------------------------
+- SALVAR VIA LINK:
+  Ao clicar em "Link" em qualquer card ou abrir o portfólio detalhado, a URL
+  oficial única é copiada para a área de transferência para envio rápido a
+  recrutadores, professores ou redes sociais.
+
+- SALVAR VIA PDF:
+  Ao clicar no botão "PDF" ou "Salvar em PDF" no detalhe do portfólio, o sistema
+  aciona o diálogo de impressão do navegador (Ctrl + P) com formatação A4 limpa
+  e estilizada, ocultando barras e botões automaticamente.
+
+
+8. RESOLUÇÃO DE PROBLEMAS COMUNS (TROUBLESHOOTING)
+--------------------------------------------------------------------------------
+- Problema: "Erro interno ao fazer login"
+  Causa: O processo do backend no terminal estava em execução com a versão antiga.
+  Solução: Vá ao terminal do backend, aperte Ctrl + C para parar e digite "npm start".
+
+- Problema: Páginas não trocam ao clicar na barra lateral
+  Solução: Dê um F5 no navegador para carregar o código atualizado do router.
+
+- Problema: Porta 3000 ou 5173 já em uso
+  Solução: Encerre processos Node.js anteriores ou reinicie o terminal.
+================================================================================

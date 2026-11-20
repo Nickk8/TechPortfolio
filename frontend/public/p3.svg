@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="60%" stop-color="#6C47FF"/>
+      <stop offset="100%" stop-color="#00C4FF"/>
+    </linearGradient>
+    <filter id="shadow3" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#001440" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bg3)"/>
+
+  <!-- Design Interface Mockup (Webnode UI/UX style) -->
+  <g filter="url(#shadow3)">
+    <!-- Canvas frame -->
+    <rect x="110" y="55" width="380" height="290" rx="20" fill="#FFFFFF"/>
+    
+    <!-- Header of UI -->
+    <rect x="135" y="80" width="140" height="12" rx="6" fill="#0D1B3E"/>
+    <rect x="135" y="102" width="220" height="8" rx="4" fill="#CBD5E8"/>
+    
+    <!-- Color Swatches / Palette (Webnode identity) -->
+    <circle cx="150" cy="135" r="14" fill="#0066FF"/>
+    <circle cx="185" cy="135" r="14" fill="#00C4FF"/>
+    <circle cx="220" cy="135" r="14" fill="#6C47FF"/>
+    <circle cx="255" cy="135" r="14" fill="#00D9C0"/>
+    <circle cx="290" cy="135" r="14" fill="#0A1628"/>
+
+    <!-- UI Component Cards -->
+    <rect x="135" y="170" width="155" height="145" rx="12" fill="#F0F4FF" stroke="#D8E2F0" stroke-width="1"/>
+    <rect x="150" y="185" width="125" height="65" rx="8" fill="#0066FF" opacity="0.15"/>
+    <rect x="150" y="260" width="90" height="8" rx="4" fill="#0D1B3E"/>
+    <rect x="150" y="276" width="60" height="6" rx="3" fill="#8BA3C7"/>
+    <circle cx="265" cy="275" r="12" fill="#0066FF"/>
+    <path d="M261 275l3 3 5-5" stroke="#FFFFFF" stroke-width="1.6" stroke-linecap="round"/>
+
+    <!-- Component 2: Mobile View Mockup -->
+    <rect x="310" y="170" width="155" height="145" rx="12" fill="#0A1628"/>
+    <rect x="325" y="185" width="80" height="8" rx="4" fill="#00C4FF"/>
+    <rect x="325" y="202" width="125" height="5" rx="2.5" fill="#8BA3C7"/>
+    <rect x="325" y="222" width="125" height="50" rx="8" fill="rgba(255,255,255,0.08)"/>
+    <rect x="325" y="285" width="125" height="18" rx="6" fill="#0066FF"/>
+    <text x="387" y="298" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#FFFFFF" text-anchor="middle">Acessar App</text>
+  </g>
+
+  <!-- Floating Badge -->
+  <g transform="translate(430, 36)" filter="url(#shadow3)">
+    <rect width="120" height="34" rx="17" fill="#FFFFFF"/>
+    <text x="60" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#0066FF" text-anchor="middle">UI / DESIGN</text>
+  </g>
+</svg>

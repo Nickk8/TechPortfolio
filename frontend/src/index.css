@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap');
+
+:root {
+  /* ── Paleta Webnode ─────────────────────────── */
+  --primary: #0066FF;
+  --primary-light: #3385FF;
+  --primary-dark: #004FCC;
+  --primary-gradient: linear-gradient(135deg, #0066FF 0%, #00C4FF 100%);
+  --primary-gradient-vibrant: linear-gradient(135deg, #0057E0 0%, #0066FF 50%, #00AAFF 100%);
+  --hero-gradient: linear-gradient(135deg, #0057E0 0%, #0073FF 40%, #00C4FF 100%);
+
+  /* Accent */
+  --accent: #00C4FF;
+  --accent-purple: #6C47FF;
+  --accent-teal: #00D9C0;
+  --accent-orange: #FF6B35;
+
+  /* Sidebar — dark navy Webnode-style */
+  --sidebar-bg: #0A1628;
+  --sidebar-border: rgba(255,255,255,0.07);
+  --sidebar-icon-active: #00C4FF;
+  --sidebar-text: #8BA3C7;
+  --sidebar-text-active: #ffffff;
+  --sidebar-width: 80px;
+
+  /* Content area */
+  --content-bg: #F0F4FF;
+  --card-bg: #ffffff;
+  --card-shadow: 0 2px 8px rgba(0,102,255,0.06), 0 1px 3px rgba(0,0,0,0.06);
+  --card-hover-shadow: 0 12px 32px rgba(0,102,255,0.14), 0 2px 8px rgba(0,0,0,0.08);
+  --card-radius: 16px;
+
+  /* Typography */
+  --text-primary: #0D1B3E;
+  --text-secondary: #4A5568;
+  --text-muted: #8D9BB5;
+
+  /* Topbar */
+  --topbar-bg: #ffffff;
+  --topbar-border: #E2E8F4;
+  --topbar-height: 64px;
+
+  /* Inputs */
+  --input-bg: #ffffff;
+  --input-border: #CBD5E8;
+  --input-focus: #0066FF;
+  --input-radius: 10px;
+
+  /* Status colors */
+  --green: #10b981;
+  --red: #ef4444;
+  --orange: #f59e0b;
+
+  /* Transitions */
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--content-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E8;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8D9BB5;
+}
+
+/* ── Webnode-style keyframes ──────────────── */
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-float {
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease forwards;
+}
+
+/* Utility classes */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-slide-in {
+  animation: slideInLeft 0.3s ease forwards;
+}

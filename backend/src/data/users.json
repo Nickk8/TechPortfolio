@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "nome": "Maria Silva",
+    "username": "mariasilva",
+    "email": "maria.silva@escola.br",
+    "senha": "123",
+    "papel": "Estudante",
+    "instituicao": "Colégio Estadual",
+    "curso": "Ensino Médio",
+    "anoSerie": "3º Ano",
+    "cidade": "Fortaleza - CE",
+    "bio": "Estudante apaixonada por tecnologia, educação e impacto social."
+  },
+  {
+    "id": 1794361230897,
+    "nome": "Kauan Maia",
+    "username": "kauanmaia",
+    "email": "kauanmelomaia@gmail.com",
+    "senha": "123456",
+    "instituicao": "IFCE campus Maranguape",
+    "curso": "Ensino Médio",
+    "anoSerie": "1º Ano",
+    "cidade": "Brasil",
+    "bio": "Estudante na instituição IFCE campus Maranguape.",
+    "papel": "Estudante",
+    "criadoEm": "2026-11-11T01:40:30.898Z"
+  },
+  {
+    "id": 1795056981763,
+    "nome": "jennifer anne magalhães oliveira",
+    "username": "jenniferannemagalhaesoliveira",
+    "email": "jenniferanne418@gmail.com",
+    "senha": "123456789",
+    "instituicao": "EEEP Comendador Miguel Gurgel",
+    "curso": "Ensino Médio",
+    "anoSerie": "1º Ano",
+    "cidade": "Brasil",
+    "bio": "Estudante na instituição EEEP Comendador Miguel Gurgel.",
+    "papel": "Estudante",
+    "criadoEm": "2026-11-19T02:56:21.763Z"
+  }
+]

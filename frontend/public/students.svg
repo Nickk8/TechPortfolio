@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="studentBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1628"/>
+      <stop offset="60%" stop-color="#003580"/>
+      <stop offset="100%" stop-color="#0066FF"/>
+    </linearGradient>
+    <linearGradient id="heroBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0066FF"/>
+      <stop offset="100%" stop-color="#00C4FF"/>
+    </linearGradient>
+    <filter id="drop" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#001844" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="700" height="500" fill="url(#studentBg)"/>
+
+  <!-- Background glow & circles -->
+  <circle cx="580" cy="120" r="140" fill="#00C4FF" opacity="0.12"/>
+  <circle cx="120" cy="400" r="100" fill="#0066FF" opacity="0.2"/>
+
+  <!-- Central Workstation & Collaborative Portfolio Builder -->
+  <g filter="url(#drop)">
+    <!-- Main screen / Canvas -->
+    <rect x="90" y="70" width="520" height="340" rx="20" fill="#0E1E38" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+
+    <!-- Screen Topbar -->
+    <rect x="90" y="70" width="520" height="44" rx="20" fill="#152744"/>
+    <rect x="90" y="94" width="520" height="20" fill="#152744"/>
+    <circle cx="120" cy="92" r="5" fill="#FF5F56"/>
+    <circle cx="136" cy="92" r="5" fill="#FFBD2E"/>
+    <circle cx="152" cy="92" r="5" fill="#27C93F"/>
+    <rect x="230" y="82" width="240" height="20" rx="6" fill="#0E1E38"/>
+    <text x="350" y="96" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#8BA3C7" text-anchor="middle">meu-portfolio-profissional.app</text>
+
+    <!-- Visual Page Editor (Webnode Builder Simulation) -->
+    <rect x="120" y="135" width="290" height="240" rx="12" fill="#FFFFFF"/>
+    
+    <!-- Hero Block inside Editor -->
+    <rect x="135" y="150" width="260" height="85" rx="8" fill="url(#heroBlue)"/>
+    <circle cx="165" cy="180" r="16" fill="#FFFFFF"/>
+    <rect x="190" y="170" width="90" height="8" rx="4" fill="#FFFFFF"/>
+    <rect x="190" y="184" width="130" height="5" rx="2.5" fill="rgba(255,255,255,0.7)"/>
+    <rect x="190" y="200" width="55" height="16" rx="8" fill="#FFFFFF"/>
+    <text x="217" y="211" font-family="system-ui, sans-serif" font-size="7" font-weight="800" fill="#0066FF" text-anchor="middle">Contato</text>
+
+    <!-- Grid of Projects inside Editor -->
+    <rect x="135" y="248" width="122" height="110" rx="8" fill="#F0F4FF" stroke="#D8E2F0" stroke-width="1"/>
+    <rect x="145" y="258" width="102" height="50" rx="6" fill="#0066FF" opacity="0.2"/>
+    <rect x="145" y="316" width="70" height="6" rx="3" fill="#0D1B3E"/>
+    <rect x="145" y="328" width="45" height="5" rx="2.5" fill="#8D9BB5"/>
+
+    <rect x="272" y="248" width="123" height="110" rx="8" fill="#F0F4FF" stroke="#D8E2F0" stroke-width="1"/>
+    <rect x="282" y="258" width="103" height="50" rx="6" fill="#00C4FF" opacity="0.25"/>
+    <rect x="282" y="316" width="70" height="6" rx="3" fill="#0D1B3E"/>
+    <rect x="282" y="328" width="45" height="5" rx="2.5" fill="#8D9BB5"/>
+
+    <!-- Sidebar Tools Palette (Right side) -->
+    <rect x="430" y="135" width="155" height="240" rx="12" fill="#152744" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="445" y="160" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#FFFFFF">Elementos Webnode</text>
+
+    <!-- Draggable Tool 1 -->
+    <rect x="445" y="175" width="125" height="34" rx="8" fill="#1E3354"/>
+    <rect x="455" y="185" width="14" height="14" rx="4" fill="#00C4FF"/>
+    <text x="480" y="196" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#CBD5E8">+ Adicionar Projeto</text>
+
+    <!-- Draggable Tool 2 -->
+    <rect x="445" y="217" width="125" height="34" rx="8" fill="#1E3354"/>
+    <rect x="455" y="227" width="14" height="14" rx="4" fill="#00D9C0"/>
+    <text x="480" y="238" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#CBD5E8">+ Galeria de Fotos</text>
+
+    <!-- Draggable Tool 3 -->
+    <rect x="445" y="259" width="125" height="34" rx="8" fill="#1E3354"/>
+    <rect x="455" y="269" width="14" height="14" rx="4" fill="#6C47FF"/>
+    <text x="480" y="280" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#CBD5E8">+ Currículo / PDF</text>
+
+    <!-- Publish Button in Builder -->
+    <rect x="445" y="315" width="125" height="42" rx="10" fill="url(#heroBlue)"/>
+    <text x="507" y="340" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF" text-anchor="middle">🚀 PUBLICAR</text>
+  </g>
+
+  <!-- Floating Community Achievement Badge -->
+  <g transform="translate(60, 410)" filter="url(#drop)">
+    <rect width="210" height="54" rx="27" fill="#FFFFFF"/>
+    <circle cx="30" cy="27" r="16" fill="#0066FF"/>
+    <text x="30" y="32" font-family="system-ui, sans-serif" font-size="14" fill="#FFFFFF" text-anchor="middle">🎓</text>
+    <text x="60" y="24" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#0D1B3E">Mais de 1.200 alunos</text>
+    <text x="60" y="40" font-family="system-ui, sans-serif" font-size="10" fill="#8BA3C7">criaram seu portfólio digital</text>
+  </g>
+
+  <g transform="translate(470, 30)" filter="url(#drop)">
+    <rect width="180" height="44" rx="22" fill="#00C4FF"/>
+    <text x="90" y="27" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#0A1628" text-anchor="middle">⚡ Rápido e Sem Código</text>
+  </g>
+</svg>
